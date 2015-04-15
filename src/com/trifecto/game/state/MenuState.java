@@ -19,7 +19,7 @@ public class MenuState extends State {
 	private Font titleFont;
 	private Font selectionFont;
 	
-	private static final String TITLE = "Text Adventure";
+	private static final String TITLE = "Foshizzle";
 	
 	public MenuState(StateManager stateManager) {
 		this.stateManager = stateManager;
@@ -29,6 +29,7 @@ public class MenuState extends State {
 	@Override
 	public void init() {
 		
+		// C:/Users/Daniel/Documents/EclipseProjects/TextEngine2/assets
 		backgroundPath = "C:/Users/Daniel/Documents/EclipseProjects/TextEngine2/assets/images/QuakeLogo.jpg";
 		
 		try {

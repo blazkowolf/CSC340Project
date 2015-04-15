@@ -38,8 +38,8 @@ public class Background {
 	}
 	
 	public void tick() {
-		x += deltaX;
-		y += deltaY;
+		//x += deltaX;
+		//y += deltaY;
 	}
 	
 	public void render(Graphics2D graphics) {

@@ -43,6 +43,7 @@ public class PlayState extends State {
 	@Override
 	public void init() {
 		
+		// C:/Users/Daniel/Documents/EclipseProjects/TextEngine2
 		backgroundPath = "C:/Users/Daniel/Documents/EclipseProjects/TextEngine2/assets/images/QuakeLogo.jpg";
 		
 		try {

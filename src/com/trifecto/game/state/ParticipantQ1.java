@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
+import java.awt.*;
 import java.util.Scanner;
 
 import com.trifecto.game.gfx.Background;
@@ -19,6 +20,8 @@ public class ParticipantQ1 extends State {
 	private Color transparent;
 	
 	private boolean keyPressFlag = false;
+	
+	private String text = "Hello, I am a\nCharacter.";
 	
 	private char[] name = { 'A', 'A', 'A' };
 	
@@ -78,6 +81,11 @@ public class ParticipantQ1 extends State {
 			nameLength = responseFontMetrics.stringWidth(Character.toString(name[i]));
 			graphics.drawString(Character.toString(name[i]), (MainComponent.WIDTH / 2) + 20 * i, 200);
 			
+		}
+		
+		int y = 250;
+		for (String line : text.split("\n")) {
+			graphics.drawString(line, 100, y += graphics.getFontMetrics().getHeight());
 		}
 		
 	}

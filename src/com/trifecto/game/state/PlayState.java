@@ -12,15 +12,10 @@ import com.trifecto.game.gfx.Background;
 import com.trifecto.game.main.MainComponent;
 
 public class PlayState extends State {
-	
-	private Background background;
 
 	public Scanner inFileQ;
 	public Scanner inFileC;
 	
-	private String backgroundPath;
-	
-	private String questionsPath;
 	private String choicesPath;
 	
 	private int currChoice = 0;
@@ -28,37 +23,34 @@ public class PlayState extends State {
 	private String[] choices;
 	
 	private Color transparent;
-	
-	private Color questionColor;
-	private Font questionFont;
+
 	private Font choiceFont;
 	
     private boolean loopFlag = false;
 	
 	public PlayState(StateManager stateManager) {
-		this.stateManager = stateManager;
-		init();
+		super(stateManager);
 	}
 
 	@Override
 	public void init() {
 		
 		// C:/Users/Daniel/Documents/EclipseProjects/TextEngine2
-		backgroundPath = "C:/Users/Daniel/Documents/EclipseProjects/TextEngine2/assets/images/QuakeLogo.jpg";
+		this.backgroundPath = "assets/images/QuakeLogo.jpg";
 		
 		try {
-            background = new Background(backgroundPath, 1);
-            background.setVector(-0.1, 0);
+            this.background = new Background(backgroundPath, 1);
+            this.background.setVector(-0.1, 0);
             transparent = new Color(0,0,0,0);
-            questionColor = new Color(128, 0, 0);
-            questionFont = new Font("Press Start 2P", Font.PLAIN, 18);
+            this.questionColor = new Color(128, 0, 0);
+            this.questionFont = new Font("Press Start 2P", Font.PLAIN, 18);
             choiceFont = new Font("Press Start 2P", Font.PLAIN, 10);
         } catch(Exception e) {
             e.printStackTrace();
         }
 		
-		questionsPath = "C:/Users/Daniel/Documents/EclipseProjects/TextEngine2/assets/questions/Questions.txt";
-		choicesPath = "C:/Users/Daniel/Documents/EclipseProjects/TextEngine2/assets/questions/Choices.txt";
+		this.questionsPath = "assets/questions/Questions.txt";
+		choicesPath = "assets/questions/Choices.txt";
 		
 		try {
 			inFileQ = new Scanner(new File(questionsPath));
@@ -121,20 +113,20 @@ public class PlayState extends State {
 
 	@Override
 	public void tick() {		
-		background.tick();
+		this.background.tick();
 	}
 
 	@Override
 	public void render(Graphics2D graphics) {
 		
 		// Draw background
-        background.render(graphics);
+        this.background.render(graphics);
         
         // Draw questions and choices
         for (int i = 0; i < questions.length; i++) {
         	
-        	graphics.setColor(questionColor);
-        	graphics.setFont(questionFont);
+        	graphics.setColor(this.questionColor);
+        	graphics.setFont(this.questionFont);
         	graphics.drawString(questions[i], 10, 70);
         	
         	for (int j = 0; j < choices.length; j++) {

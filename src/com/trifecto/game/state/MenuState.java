@@ -8,36 +8,38 @@ import com.trifecto.game.main.MainComponent;
 
 public class MenuState extends State {
 	
-	private Background background;
+	//private Background background;
 	
-	private String backgroundPath;
+	//private String backgroundPath;
 	
 	private int currChoice = 0;
 	private String[] options = {"Start", "Options", "Quit"};
 	
 	private Color titleColor;
 	private Font titleFont;
+	private Font subTitleFont;
 	private Font selectionFont;
 	
-	private static final String TITLE = "Foshizzle";
+	private static final String TITLE = "Last Night Of The World";
+	private static final String SUB_TITLE = "An Existential Journey";
 	
 	public MenuState(StateManager stateManager) {
-		this.stateManager = stateManager;
-		init();
+		super(stateManager);
 	}
 
 	@Override
 	public void init() {
 		
 		// C:/Users/Daniel/Documents/EclipseProjects/TextEngine2/assets
-		backgroundPath = "C:/Users/Daniel/Documents/EclipseProjects/TextEngine2/assets/images/QuakeLogo.jpg";
+		this.backgroundPath = "assets/images/QuakeLogo.jpg";
 		
 		try {
-            background = new Background(backgroundPath, 1);
-            background.setVector(-0.1, 0);
+            this.background = new Background(this.backgroundPath, 1);
+            this.background.setVector(-0.1, 0);
             titleColor = new Color(128, 0, 0);
-            titleFont = new Font("Press Start 2P", Font.PLAIN, 24);
-            selectionFont = new Font("Press Start 2P", Font.PLAIN, 10);
+            titleFont = new Font("Press Start 2P", Font.BOLD, 14);
+            subTitleFont = new Font("Press Start 2P", Font.PLAIN, 12);
+            selectionFont = new Font("Press Start 2P", Font.PLAIN, 8);
         } catch(Exception e) {
             e.printStackTrace();
         }		
@@ -45,7 +47,7 @@ public class MenuState extends State {
 
 	@Override
 	public void tick() {
-		background.tick();
+		this.background.tick();
 	}
 
 	@Override
@@ -53,7 +55,7 @@ public class MenuState extends State {
 		//System.out.println("MenuState render...");
 		
 		// Draw background
-        background.render(graphics);
+        this.background.render(graphics);
         
         // Calculations for centering fonts on the JFrame
         FontMetrics titleFontMetrics = graphics.getFontMetrics(titleFont);
@@ -65,6 +67,13 @@ public class MenuState extends State {
         graphics.setColor(titleColor);
         graphics.setFont(titleFont);
         graphics.drawString(TITLE, (MainComponent.WIDTH / 2) - (titleLength / 2), 70);
+        
+        titleFontMetrics = graphics.getFontMetrics(subTitleFont);
+        titleLength = titleFontMetrics.stringWidth(SUB_TITLE);
+        
+        // Draw Sub-Title
+        graphics.setFont(subTitleFont);
+        graphics.drawString(SUB_TITLE, (MainComponent.WIDTH / 2) - (titleLength / 2), 100);
         
         // Draw menu options
         graphics.setFont(selectionFont);
@@ -103,7 +112,7 @@ public class MenuState extends State {
 	private void select() {
 		
 		if (currChoice == 0) {
-			stateManager.setState(StateManager.PLAYSTATE);
+			stateManager.setState(StateManager.PQ1);
 		}
 		
 		if (currChoice == 1) {

@@ -11,12 +11,14 @@ public class StateManager {
 	private int currentState;
 	public static final int MENUSTATE = 0;
 	public static final int PLAYSTATE = 1;
+	public static final int PQ1 = 2;
 	
 	public StateManager() {
 		states = new ArrayList<State>();
 		currentState = MENUSTATE;
 		states.add(new MenuState(this));
 		states.add(new PlayState(this));
+		states.add(new ParticipantQ1(this));
 	}
 	
 	public void setState(int state) {

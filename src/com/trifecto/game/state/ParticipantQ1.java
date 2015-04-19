@@ -14,7 +14,6 @@ import com.trifecto.game.main.MainComponent;
 public class ParticipantQ1 extends State {
 	
 	private Scanner type;
-	
 	private String oldName;
 	
 	private Color transparent;
@@ -23,7 +22,8 @@ public class ParticipantQ1 extends State {
 	
 	private String text = "Hello, I am a\nCharacter.";
 	
-	private char[] name = { 'A', 'A', 'A' };
+	private char[] name;
+	private int currentChar;
 	
 	public ParticipantQ1(StateManager stateManager) {
 		super(stateManager);
@@ -32,12 +32,15 @@ public class ParticipantQ1 extends State {
 	@Override
 	public void init() {
 		
+		name = new char[] { 'A', 'A', 'A' };
+		currentChar = 0;
+		
 		this.backgroundPath = "assets/images/QuakeLogo.jpg";
 		
 		try {
 			
 			this.background = new Background(this.backgroundPath, 0.5);
-			this.background.setVector(-1.0, 0);
+			this.background.setVector(-0.1, 0);
 			this.questionColor = new Color(128, 0, 0);
 			this.questionFont = new Font("Press Start 2P", Font.PLAIN, 10);
 			this.responseFont = new Font("Press Start 2P", Font.PLAIN, 15);
@@ -65,13 +68,13 @@ public class ParticipantQ1 extends State {
 		// Text centering calculations
 		FontMetrics questionFontMetrics = graphics.getFontMetrics(this.questionFont);
         FontMetrics responseFontMetrics = graphics.getFontMetrics(this.responseFont);
-        int questionLength = questionFontMetrics.stringWidth("What is your name?");
+        int questionLength = questionFontMetrics.stringWidth("What is your name, sonny?");
         int nameLength;
 		
 		// Draw question
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
-		graphics.drawString("What is your name?", (MainComponent.WIDTH / 2) - (questionLength / 2), 20);
+		graphics.drawString("What is your name, sonny?", (MainComponent.WIDTH / 2) - (questionLength / 2), 20);
 		
 		// Type response
 		graphics.setFont(this.responseFont);
@@ -79,9 +82,18 @@ public class ParticipantQ1 extends State {
 		for (int i = 0; i < name.length; i++) {
 			
 			nameLength = responseFontMetrics.stringWidth(Character.toString(name[i]));
-			graphics.drawString(Character.toString(name[i]), (MainComponent.WIDTH / 2) + 20 * i, 200);
+			
+			if(i == currentChar) {
+                graphics.setColor(Color.WHITE);
+            } else {
+                graphics.setColor(Color.RED);
+            }
+			
+			graphics.drawString(Character.toString(name[i]), 175 + 20 * i, (MainComponent.HEIGHT / 2));
 			
 		}
+		
+		graphics.setColor(Color.RED);
 		
 		int y = 250;
 		for (String line : text.split("\n")) {
@@ -92,7 +104,47 @@ public class ParticipantQ1 extends State {
 
 	@Override
 	public void keyPressed(int key) {
+		
 		if (key == KeyEvent.VK_ENTER) { select(); }
+		
+		if (key == KeyEvent.VK_UP) {
+			if (name[currentChar] == ' ') {
+				name[currentChar] = 'Z';
+			} else {
+				name[currentChar]--;
+				if (name[currentChar] < 'A') {
+					name[currentChar] = ' ';
+				}
+			}
+		}
+		
+		if (key == KeyEvent.VK_DOWN) {
+			if (name[currentChar] == ' ') {
+				name[currentChar] = 'A';
+			} else {
+				name[currentChar]++;
+				if (name[currentChar] > 'Z') {
+					name[currentChar] = ' ';
+				}
+			}
+		}
+		
+		if (key == KeyEvent.VK_LEFT) {
+			if (currentChar == 0) {
+				currentChar = name.length - 1;
+			} else {
+				currentChar--;
+			}
+		}
+		
+		if (key == KeyEvent.VK_RIGHT) {
+			if (currentChar == name.length - 1) {
+				currentChar = 0;
+			} else {
+				currentChar++;
+			}
+		}
+		
 	}
 
 	@Override
@@ -101,7 +153,13 @@ public class ParticipantQ1 extends State {
 	}
 	
 	private void select() {
-		keyPressFlag = true;
+		
+		for (int i = 0; i < name.length; i++) {
+			this.partName += Character.toString(name[i]);
+		}
+		
+		this.stateManager.setState(StateManager.PQ2);
+		
 	}
 
 }

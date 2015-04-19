@@ -19,7 +19,7 @@ public abstract class State {
 	
 	protected Font responseFont;
 	
-	protected String partName;
+	protected String partName = "";
 	
 	public State(StateManager stateManager) {
 		this.stateManager = stateManager;

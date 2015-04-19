@@ -12,6 +12,8 @@ public class StateManager {
 	public static final int MENUSTATE = 0;
 	public static final int PLAYSTATE = 1;
 	public static final int PQ1 = 2;
+	public static final int PQ2 = 3;
+	public static final int PQ3 = 4;
 	
 	public StateManager() {
 		states = new ArrayList<State>();

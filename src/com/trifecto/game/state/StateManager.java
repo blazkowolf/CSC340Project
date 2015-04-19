@@ -14,6 +14,7 @@ public class StateManager {
 	public static final int PQ1 = 2;
 	public static final int PQ2 = 3;
 	public static final int PQ3 = 4;
+	public static final int GAMEOVER = 5;
 	
 	public StateManager() {
 		states = new ArrayList<State>();
@@ -21,6 +22,9 @@ public class StateManager {
 		states.add(new MenuState(this));
 		states.add(new PlayState(this));
 		states.add(new ParticipantQ1(this));
+		states.add(new ParticipantQ2(this));
+		states.add(new ParticipantQ3(this));
+		states.add(new GameOver(this));
 	}
 	
 	public void setState(int state) {

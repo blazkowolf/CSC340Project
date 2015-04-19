@@ -1,12 +1,22 @@
-1a) Reinhardt Schneider
-1b) Carrie Fernandez
-1c) Gabriel Belmont
-1d) Duke Nukem
-2a) Go postal!
-2b) Bro, you know I'm on dat' Elder Scrolls.
-2c) Let's get some coffee.
-2d) Wanna just chill?
-3a) Yeah, we can do that.
-3b) Na, man. We ain't digging that low.
-3c) Fuck bowling...
-3d) ...
+A1.1;Approach the door;B
+A1.2;Investigate the room further;A2
+A1.3;Go back to sleep;A
+A2.1;Approach the door;B
+A2.2;Investigate the room further;A2
+A2.3;Go back to sleep;A
+B.1;Open the door;C
+B.2;Attempt to converse with the whispers;D
+C.6;Run back in to the room;E
+C.7;Turn away and continue your journey;E2
+E.8;Follow the path;F
+E.9;Sit and enjoy the surroundings;G
+G.10;Attempt tp speak to the whispers;D
+G.11;Ignore the whispers and go to sleep;A
+F.12;Find a place to rest for the night;A
+F.13;Walk blindly, further into the forest;H
+H.14;Sit right where you are and wait pateintly for daylight so you can see where this dropoff ends;I
+H.15;Jump in;I
+I.16;Speak to them;D
+I.17;Ignore the whispers and rest, you are tired from being awake all night;A
+J.18;Call out to the black mass;K
+J.19;Call out to the whispers;D

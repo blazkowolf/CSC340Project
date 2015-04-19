@@ -12,14 +12,7 @@ import com.trifecto.game.gfx.Background;
 import com.trifecto.game.main.MainComponent;
 
 public class ParticipantQ1 extends State {
-	
-	private Scanner type;
-	private String oldName;
-	
-	private Color transparent;
-	
-	private boolean keyPressFlag = false;
-	
+
 	private String text = "Hello, I am a\nCharacter.";
 	
 	private char[] name;
@@ -44,8 +37,6 @@ public class ParticipantQ1 extends State {
 			this.questionColor = new Color(128, 0, 0);
 			this.questionFont = new Font("Press Start 2P", Font.PLAIN, 12);
 			this.responseFont = new Font("Press Start 2P", Font.PLAIN, 40);
-			
-			this.type = new Scanner(System.in);
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -158,7 +149,9 @@ public class ParticipantQ1 extends State {
 			this.partName += Character.toString(name[i]);
 		}
 		
-		this.stateManager.setState(StateManager.PQ2);
+		System.out.println("partName: " + this.partName);
+		
+		this.stateManager.setState(StateManager.GAMEOVER);
 		
 	}
 

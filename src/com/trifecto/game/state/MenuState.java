@@ -34,12 +34,14 @@ public class MenuState extends State {
 		this.backgroundPath = "assets/images/QuakeLogo.jpg";
 		
 		try {
+			
             this.background = new Background(this.backgroundPath, 1);
             this.background.setVector(-0.1, 0);
             titleColor = new Color(128, 0, 0);
             titleFont = new Font("Press Start 2P", Font.BOLD, 14);
             subTitleFont = new Font("Press Start 2P", Font.PLAIN, 12);
             selectionFont = new Font("Press Start 2P", Font.PLAIN, 8);
+            
         } catch(Exception e) {
             e.printStackTrace();
         }		
@@ -86,6 +88,7 @@ public class MenuState extends State {
             }
             graphics.drawString(options[i], (MainComponent.WIDTH / 2) - (selectionLength / 2), 140 + i * 15);
         }
+        
 	}
 
 	@Override

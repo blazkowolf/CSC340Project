@@ -2,6 +2,7 @@ package com.trifecto.game.state;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.io.BufferedReader;
 
 import com.trifecto.game.gfx.Background;
 
@@ -9,21 +10,28 @@ public abstract class State {
 	
 	protected StateManager stateManager;
 	
+	protected BufferedReader bufferedReader;
+	
 	protected Background background;
 	protected String backgroundPath;
 	
 	protected String questionsPath;
+	protected String[] questions;
 	
 	protected Color questionColor;
 	protected Font questionFont;
 	
 	protected Font responseFont;
 	
-	protected String partName = "";
+	protected static String partName = "";
 	
 	public State(StateManager stateManager) {
 		this.stateManager = stateManager;
 		init();
+	}
+	
+	public static String getPartName() {
+		return partName;
 	}
 	
 	public abstract void init();

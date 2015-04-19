@@ -3,17 +3,25 @@ package com.trifecto.game.state;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 
 import com.trifecto.game.gfx.Background;
+import com.trifecto.game.main.MainComponent;
 
-public class ParticipantQ2 extends State {
+public class GameOver extends State {
 	
-	public ParticipantQ2(StateManager stateManager) {
+	private String endText;
+
+	public GameOver(StateManager stateManager) {
 		super(stateManager);
 	}
 
 	@Override
 	public void init() {
+		
+		endText = partName + ", the game is over.";
+		
+		System.out.println("GameOver partName: " + partName);
 		
 		this.backgroundPath = "assets/images/QuakeLogo.jpg";
 		
@@ -29,6 +37,8 @@ public class ParticipantQ2 extends State {
 			e.printStackTrace();
 		}
 		
+		this.questionsPath = "assets/questions/Questions.txt";
+		
 	}
 
 	@Override
@@ -39,11 +49,20 @@ public class ParticipantQ2 extends State {
 	@Override
 	public void render(Graphics2D graphics) {
 		
+		this.background.render(graphics);
+		
+		graphics.setColor(this.questionColor);
+		graphics.setFont(this.questionFont);
+		graphics.drawString(this.endText, 10, 20);
+		
+		
 	}
 
 	@Override
 	public void keyPressed(int key) {
-		
+		if (key == KeyEvent.VK_ENTER) {
+			System.exit(0);
+		}
 	}
 
 	@Override

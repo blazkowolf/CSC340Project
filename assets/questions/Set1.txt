@@ -1,0 +1,7 @@
+1;What is your name?
+2;Are you a bro (True or False)?
+3;How long is your leg?
+a;Long enough
+b;They call me Yao Ming
+c;5 feet
+d;Too long

@@ -42,8 +42,8 @@ public class ParticipantQ1 extends State {
 			this.background = new Background(this.backgroundPath, 0.5);
 			this.background.setVector(-0.1, 0);
 			this.questionColor = new Color(128, 0, 0);
-			this.questionFont = new Font("Press Start 2P", Font.PLAIN, 10);
-			this.responseFont = new Font("Press Start 2P", Font.PLAIN, 15);
+			this.questionFont = new Font("Press Start 2P", Font.PLAIN, 12);
+			this.responseFont = new Font("Press Start 2P", Font.PLAIN, 40);
 			
 			this.type = new Scanner(System.in);
 			
@@ -74,7 +74,7 @@ public class ParticipantQ1 extends State {
 		// Draw question
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
-		graphics.drawString("What is your name, sonny?", (MainComponent.WIDTH / 2) - (questionLength / 2), 20);
+		graphics.drawString("What is your name, sonny?", (MainComponent.WIDTH / 2) - (questionLength / 2), 50);
 		
 		// Type response
 		graphics.setFont(this.responseFont);
@@ -89,16 +89,16 @@ public class ParticipantQ1 extends State {
                 graphics.setColor(Color.RED);
             }
 			
-			graphics.drawString(Character.toString(name[i]), 175 + 20 * i, (MainComponent.HEIGHT / 2));
+			graphics.drawString(Character.toString(name[i]), 145 + 40 * i, (MainComponent.HEIGHT / 2));
 			
 		}
 		
-		graphics.setColor(Color.RED);
-		
-		int y = 250;
-		for (String line : text.split("\n")) {
-			graphics.drawString(line, 100, y += graphics.getFontMetrics().getHeight());
-		}
+//		graphics.setColor(Color.RED);
+//		
+//		int y = 250;
+//		for (String line : text.split("\n")) {
+//			graphics.drawString(line, 100, y += graphics.getFontMetrics().getHeight());
+//		}
 		
 	}
 

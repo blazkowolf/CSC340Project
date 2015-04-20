@@ -10,7 +10,7 @@ import com.trifecto.game.main.MainComponent;
 
 public class GameOver extends State {
 	
-	private String endText;
+	//private String endText = partName + ", the game is over.";
 
 	public GameOver(StateManager stateManager) {
 		super(stateManager);
@@ -19,9 +19,7 @@ public class GameOver extends State {
 	@Override
 	public void init() {
 		
-		endText = partName + ", the game is over.";
-		
-		System.out.println("GameOver partName: " + partName);
+		//endText = partName + ", the game is over.";
 		
 		this.backgroundPath = "assets/images/QuakeLogo.jpg";
 		
@@ -53,7 +51,7 @@ public class GameOver extends State {
 		
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
-		graphics.drawString(this.endText, 10, 20);
+		graphics.drawString(partName + ", the game is over.", 10, 20);
 		
 		
 	}
@@ -61,6 +59,8 @@ public class GameOver extends State {
 	@Override
 	public void keyPressed(int key) {
 		if (key == KeyEvent.VK_ENTER) {
+			System.out.println("GameOver partName: " + partName);
+			
 			System.exit(0);
 		}
 	}

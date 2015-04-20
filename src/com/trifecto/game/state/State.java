@@ -24,6 +24,8 @@ public abstract class State {
 	protected Font responseFont;
 	
 	protected static String partName = "";
+	protected static String isBro = "";
+	protected static int legLength;
 	
 	public State(StateManager stateManager) {
 		this.stateManager = stateManager;

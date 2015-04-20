@@ -15,8 +15,8 @@ public abstract class State {
 	protected Background background;
 	protected String backgroundPath;
 	
-	protected String questionsPath;
-	protected String[] questions;
+	protected static String questionsPath = "assets/questions/Questions.txt";
+	protected static String[] questions = new String[15];
 	
 	protected Color questionColor;
 	protected Font questionFont;
@@ -29,11 +29,18 @@ public abstract class State {
 	
 	public State(StateManager stateManager) {
 		this.stateManager = stateManager;
+		
 		init();
 	}
 	
 	public static String getPartName() {
 		return partName;
+	}
+	
+	private static void readFile() {
+		
+		
+		
 	}
 	
 	public abstract void init();

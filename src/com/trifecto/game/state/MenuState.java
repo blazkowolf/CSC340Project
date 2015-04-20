@@ -13,7 +13,7 @@ public class MenuState extends State {
 	//private String backgroundPath;
 	
 	private int currChoice = 0;
-	private String[] options = {"Start", "Options", "Quit"};
+	private String[] options = {"Start", "Quit"};
 	
 	private Color titleColor;
 	private Font titleFont;
@@ -84,7 +84,7 @@ public class MenuState extends State {
             if(i == currChoice) {
                 graphics.setColor(Color.WHITE);
             } else {
-                graphics.setColor(Color.RED);
+                graphics.setColor(titleColor);
             }
             graphics.drawString(options[i], (MainComponent.WIDTH / 2) - (selectionLength / 2), 140 + i * 15);
         }

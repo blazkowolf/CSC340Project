@@ -2,6 +2,7 @@ package com.trifecto.game.state;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 
@@ -49,9 +50,15 @@ public class GameOver extends State {
 		
 		this.background.render(graphics);
 		
+		//FontMetrics responseFontMetrics = graphics.getFontMetrics(this.responseFont);
+		//int hitEnter = resonseFontMetrics.stringWidth("")
+		
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
-		graphics.drawString(partName + ", the game is over.", 10, 20);
+		graphics.drawString(partName.substring(partName.length() - 3) + ", the game is over.", 10, 20);
+		
+		//graphics.setFont(this.responseFont);
+		//graphics.drawString("Hit ENTER to play again", , y);
 		
 		
 	}
@@ -60,8 +67,7 @@ public class GameOver extends State {
 	public void keyPressed(int key) {
 		if (key == KeyEvent.VK_ENTER) {
 			System.out.println("GameOver partName: " + partName);
-			
-			System.exit(0);
+			stateManager.setState(StateManager.MENUSTATE);
 		}
 	}
 

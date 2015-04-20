@@ -61,6 +61,7 @@ public class ParticipantQ1 extends State {
         FontMetrics responseFontMetrics = graphics.getFontMetrics(this.responseFont);
         int questionLength = questionFontMetrics.stringWidth("What is your name, sonny?");
         int nameLength;
+        int nameHeight = responseFontMetrics.getHeight();
 		
 		// Draw question
 		graphics.setColor(this.questionColor);
@@ -77,10 +78,14 @@ public class ParticipantQ1 extends State {
 			if(i == currentChar) {
                 graphics.setColor(Color.WHITE);
             } else {
-                graphics.setColor(Color.RED);
+                graphics.setColor(this.questionColor);
             }
 			
-			graphics.drawString(Character.toString(name[i]), 145 + 40 * i, (MainComponent.HEIGHT / 2));
+			graphics.drawString(
+					Character.toString(name[i]), 
+					145 + 40 * i, 
+					(MainComponent.HEIGHT / 2) + (nameHeight / 2)
+			);
 			
 		}
 		

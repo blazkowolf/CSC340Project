@@ -28,7 +28,7 @@ public abstract class State {
 	
 	protected static String partName = "";
 	protected static String isBro = "";
-	protected static int legLength;
+	protected static String legLength = "";
 	
 	protected static String endText;
 	

@@ -62,8 +62,9 @@ public class GameOver extends State {
 		//ParticipantQ1.partName + ParticipantQ2.isBro + "but the\ngame is over."
 		
 		int y = 20;
-		graphics.drawString(partName.substring(partName.length() - 3) + ParticipantQ2.isBro + "but the ", 10, y);
-		graphics.drawString("game is over.", 10, y += graphics.getFontMetrics().getHeight());
+		graphics.drawString(partName.substring(partName.length() - 3) + isBro, 10, y);
+		graphics.drawString(legLength, 10, y += graphics.getFontMetrics().getHeight());
+		graphics.drawString("but the game is over.", 10, y += graphics.getFontMetrics().getHeight());
 		
 		
 		//graphics.setFont(this.responseFont);

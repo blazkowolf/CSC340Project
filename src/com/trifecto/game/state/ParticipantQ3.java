@@ -101,7 +101,23 @@ public class ParticipantQ3 extends State {
 	
 	private void select() {
 		
-		System.exit(0);
+		if (currChoice == 0) {
+			legLength = "and your leg is long enough, ";
+		}
+		
+		if (currChoice == 1) {
+			legLength = "and they call you Yao Ming, ";
+		}
+		
+		if (currChoice == 2) {
+			legLength = "and your leg is 5 feet long, ";
+		}
+		
+		if (currChoice == 3) {
+			legLength = "and your leg is too long, ";
+		}
+		
+		stateManager.setState(StateManager.GAMEOVER);
 		
 	}
 

@@ -16,7 +16,6 @@ public class GameOver extends State {
 
 	public GameOver(StateManager stateManager) {
 		super(stateManager);
-		super.setEndText(ParticipantQ1.partName + ParticipantQ2.isBro + "but the\ngame is over.");
 	}
 
 	@Override
@@ -57,14 +56,14 @@ public class GameOver extends State {
 		
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
-		//partName.length() - 3) + ", the game is over."
+		//partName.substring(partName.length() - 3)
 		
 		//ParticipantQ1.partName + ParticipantQ2.isBro + "but the\ngame is over."
 		
 		int y = 20;
 		graphics.drawString(partName.substring(partName.length() - 3) + isBro, 10, y);
-		graphics.drawString(legLength, 10, y += graphics.getFontMetrics().getHeight());
-		graphics.drawString("but the game is over.", 10, y += graphics.getFontMetrics().getHeight());
+		graphics.drawString(legLength, 10, (y += graphics.getFontMetrics().getHeight() + 5));
+		graphics.drawString("but the game is over.", 10, (y += graphics.getFontMetrics().getHeight() + 5));
 		
 		
 		//graphics.setFont(this.responseFont);
@@ -78,6 +77,9 @@ public class GameOver extends State {
 		if (key == KeyEvent.VK_ENTER) {
 			System.out.println("GameOver partName: " + partName);
 			System.out.println("isBro: " + isBro);
+			//partName = "";
+			//isBro = "";
+			//legLength = "";
 			stateManager.setState(StateManager.MENUSTATE);
 		}
 	}

@@ -13,14 +13,14 @@ import java.io.IOException;
 import com.trifecto.game.gfx.Background;
 import com.trifecto.game.main.MainComponent;
 
-public class StoryQA1 extends State {
+public class StoryQA2 extends State {
 	
 	private int currChoice = 0;
 	private String[] responses;
 	
-	private String question = questions[3].substring(3);
+	private String question = questions[4].substring(3);
 	
-	public StoryQA1(StateManager stateManager) {
+	public StoryQA2(StateManager stateManager) {
 		super(stateManager);
 	}
 
@@ -54,7 +54,7 @@ public class StoryQA1 extends State {
 			
 			int i = 0;
 			while ((line = this.choicesBufferedReader.readLine()) != null && (i < 3)) {
-				if (line.substring(0, 2).equals("A1")) {
+				if (line.substring(0, 2).equals("A2")) {
 					this.responses[i] = line;
 					i++;
 				}
@@ -144,7 +144,6 @@ public class StoryQA1 extends State {
 		if (currChoice == 2) {
 			stateManager.setState(StateManager.SQA1);
 		}
-
 	}
 
 }

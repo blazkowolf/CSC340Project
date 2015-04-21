@@ -44,14 +44,6 @@ public abstract class State {
 		init();
 	}
 	
-	public void setEndText(String end) {
-		endText = end;
-	}
-	
-	public static String getPartName() {
-		return partName;
-	}
-	
 	private void readFile() {
 		
 		try {

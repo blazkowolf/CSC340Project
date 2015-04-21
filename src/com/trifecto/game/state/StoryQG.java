@@ -13,61 +13,63 @@ import java.io.IOException;
 import com.trifecto.game.gfx.Background;
 import com.trifecto.game.main.MainComponent;
 
-public class StoryQA1 extends State {
-	
+public class StoryQG extends State {
+
 	private int currChoice = 0;
 	private String[] responses;
-	
-	private String question = questions[3].substring(3);
-	
-	public StoryQA1(StateManager stateManager) {
+
+	private String question = questions[9].substring(2);
+
+	public StoryQG(StateManager stateManager) {
 		super(stateManager);
 	}
 
 	@Override
 	public void init() {
-		
-		this.responses = new String[3];
-		
+		// DONT FUCK THIS UP
+		this.responses = new String[2];
+
 		this.backgroundPath = "assets/images/QuakeLogo.jpg";
-		
+
 		try {
-			
+
 			this.background = new Background(this.backgroundPath, 0.5);
 			this.background.setVector(-0.1, 0);
 			this.questionColor = new Color(128, 0, 0);
 			this.questionFont = new Font("Press Start 2P", Font.PLAIN, 8);
 			this.responseFont = new Font("Press Start 2P", Font.PLAIN, 8);
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		try {
-			this.choicesBufferedReader = new BufferedReader(new FileReader("assets/questions/Choices.txt"));
+			this.choicesBufferedReader = new BufferedReader(new FileReader(
+					"assets/questions/Choices.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
-		
+
 		String line;
 		try {
-			
+
 			int i = 0;
-			while ((line = this.choicesBufferedReader.readLine()) != null && (i < 3)) {
-				if (line.substring(0, 2).equals("A1")) {
+			while ((line = this.choicesBufferedReader.readLine()) != null
+					&& (i < 2)) {
+				if (line.substring(0, 1).equals("G")) {
 					this.responses[i] = line;
 					i++;
 				}
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		for (int i = 0; i < responses.length; i++) {
 			System.out.println(responses[i]);
 		}
-		
+
 	}
 
 	@Override
@@ -77,71 +79,79 @@ public class StoryQA1 extends State {
 
 	@Override
 	public void render(Graphics2D graphics) {
-		
+
 		this.background.render(graphics);
-		
+
 		// Text centering calculations
-		FontMetrics questionFontMetrics = graphics.getFontMetrics(this.questionFont);
-		FontMetrics responseFontMetrics = graphics.getFontMetrics(this.responseFont);
+		FontMetrics questionFontMetrics = graphics
+				.getFontMetrics(this.questionFont);
+		FontMetrics responseFontMetrics = graphics
+				.getFontMetrics(this.responseFont);
 		int selectionLength;
-		
+
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
-		
+
 		int y = 0;
 		for (String line : this.question.split(altNewLine)) {
-			graphics.drawString(line, 5, y += (graphics.getFontMetrics().getHeight() + 5));
+			graphics.drawString(line, 5, y += (graphics.getFontMetrics()
+					.getHeight() + 5));
 		}
-		
+
 		graphics.setFont(this.responseFont);
 		for (int i = 0; i < responses.length; i++) {
-			
-			selectionLength = responseFontMetrics.stringWidth(responses[i].substring(3));
-			
-			if(i == currChoice) {
-                graphics.setColor(Color.WHITE);
-            } else {
-                graphics.setColor(this.questionColor);
-            }
-            graphics.drawString(responses[i].substring(3), (MainComponent.WIDTH / 2) - (selectionLength / 2), 140 + i * 15);
-			
+			// WATCH IT DUDE
+			selectionLength = responseFontMetrics.stringWidth(responses[i]
+					.substring(2));
+
+			if (i == currChoice) {
+				graphics.setColor(Color.WHITE);
+			} else {
+				graphics.setColor(this.questionColor);
+			}
+			// DONT FUCK THIS UP
+			graphics.drawString(responses[i].substring(2),
+					(MainComponent.WIDTH / 2) - (selectionLength / 2),
+					140 + i * 15);
+
 		}
-		
+
 	}
 
 	@Override
 	public void keyPressed(int key) {
-		
-		if (key == KeyEvent.VK_ENTER) { select(); }
-		
+
+		if (key == KeyEvent.VK_ENTER) {
+			select();
+		}
+
 		if (key == KeyEvent.VK_UP) {
 			currChoice--;
-			if (currChoice == -1) { currChoice = responses.length -1; }
+			if (currChoice == -1) {
+				currChoice = responses.length - 1;
+			}
 		}
-		
+
 		if (key == KeyEvent.VK_DOWN) {
 			currChoice++;
-			if (currChoice == responses.length) { currChoice = 0; }
+			if (currChoice == responses.length) {
+				currChoice = 0;
+			}
 		}
-		
+
 	}
 
 	@Override
 	public void keyReleased(int key) {
-		
+
 	}
-	
+
 	private void select() {
-		
 		if (currChoice == 0) {
-			stateManager.setState(StateManager.SQB);
+			stateManager.setState(StateManager.SQD);
 		}
-		
+
 		if (currChoice == 1) {
-			stateManager.setState(StateManager.SQA2);
-		}
-		
-		if (currChoice == 2) {
 			stateManager.setState(StateManager.SQA1);
 		}
 

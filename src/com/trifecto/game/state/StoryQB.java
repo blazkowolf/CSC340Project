@@ -13,21 +13,21 @@ import java.io.IOException;
 import com.trifecto.game.gfx.Background;
 import com.trifecto.game.main.MainComponent;
 
-public class StoryQA1 extends State {
-	
+public class StoryQB extends State {
+
 	private int currChoice = 0;
 	private String[] responses;
 	
-	private String question = questions[3].substring(3);
+	private String question = questions[5].substring(2);
 	
-	public StoryQA1(StateManager stateManager) {
+	public StoryQB(StateManager stateManager) {
 		super(stateManager);
 	}
 
 	@Override
 	public void init() {
 		
-		this.responses = new String[3];
+		this.responses = new String[2];
 		
 		this.backgroundPath = "assets/images/QuakeLogo.jpg";
 		
@@ -53,8 +53,8 @@ public class StoryQA1 extends State {
 		try {
 			
 			int i = 0;
-			while ((line = this.choicesBufferedReader.readLine()) != null && (i < 3)) {
-				if (line.substring(0, 2).equals("A1")) {
+			while ((line = this.choicesBufferedReader.readLine()) != null && (i < 2)) {
+				if (line.substring(0, 1).equals("B")) {
 					this.responses[i] = line;
 					i++;
 				}
@@ -96,14 +96,14 @@ public class StoryQA1 extends State {
 		graphics.setFont(this.responseFont);
 		for (int i = 0; i < responses.length; i++) {
 			
-			selectionLength = responseFontMetrics.stringWidth(responses[i].substring(3));
+			selectionLength = responseFontMetrics.stringWidth(responses[i].substring(2));
 			
 			if(i == currChoice) {
                 graphics.setColor(Color.WHITE);
             } else {
                 graphics.setColor(this.questionColor);
             }
-            graphics.drawString(responses[i].substring(3), (MainComponent.WIDTH / 2) - (selectionLength / 2), 140 + i * 15);
+            graphics.drawString(responses[i].substring(2), (MainComponent.WIDTH / 2) - (selectionLength / 2), 140 + i * 15);
 			
 		}
 		
@@ -134,17 +134,13 @@ public class StoryQA1 extends State {
 	private void select() {
 		
 		if (currChoice == 0) {
-			stateManager.setState(StateManager.SQB);
+			stateManager.setState(StateManager.SQC);
 		}
 		
 		if (currChoice == 1) {
-			stateManager.setState(StateManager.SQA2);
+			stateManager.setState(StateManager.SQD);
 		}
 		
-		if (currChoice == 2) {
-			stateManager.setState(StateManager.SQA1);
-		}
-
 	}
-
+	
 }

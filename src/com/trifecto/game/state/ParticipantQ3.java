@@ -12,7 +12,7 @@ import com.trifecto.game.main.MainComponent;
 public class ParticipantQ3 extends State {
 	
 	private int currChoice = 0;
-	private String [] options = { "a) Long enough", "b) They call me Yao Ming", "c) 5 feet", "d) Too Long" };
+	private String [] options = { "Long enough", "They call me Yao Ming", "5 feet", "Too Long" };
 	
 	private String question = questions[2].substring(3);
 	

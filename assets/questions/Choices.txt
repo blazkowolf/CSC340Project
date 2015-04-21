@@ -1,22 +1,22 @@
-A1.1;Approach the door;B
-A1.2;Investigate the room further;A2
-A1.3;Go back to sleep;A
-A2.1;Approach the door;B
-A2.2;Investigate the room further;A2
-A2.3;Go back to sleep;A
-B.1;Open the door;C
-B.2;Attempt to converse with the whispers;D
-C.6;Run back in to the room;E
-C.7;Turn away and continue your journey;E2
-E.8;Follow the path;F
-E.9;Sit and enjoy the surroundings;G
-G.10;Attempt tp speak to the whispers;D
-G.11;Ignore the whispers and go to sleep;A
-F.12;Find a place to rest for the night;A
-F.13;Walk blindly, further into the forest;H
-H.14;Sit right where you are and wait pateintly for daylight so you can see where this dropoff ends;I
-H.15;Jump in;I
-I.16;Speak to them;D
-I.17;Ignore the whispers and rest, you are tired from being awake all night;A
-J.18;Call out to the black mass;K
-J.19;Call out to the whispers;D
+A1;Approach the door
+A1;Investigate the room further
+A1;Go back to sleep
+A2;Approach the door
+A2;Investigate the room further
+A2;Go back to sleep
+B;Open the door
+B;Attempt to converse with the whispers
+C;Run back in to the room
+C;Turn away and continue your journey
+E;Follow the path
+E;Sit and enjoy the surroundings
+G;Attempt tp speak to the whispers
+G;Ignore the whispers and go to sleep
+F;Find a place to rest for the night
+F;Walk blindly, further into the forest
+H;Sit where you are and wait for daylight
+H;Jump in
+I;Speak to them
+I;Ignore the whispers and rest
+J;Call out to the black mass
+J;Call out to the whispers

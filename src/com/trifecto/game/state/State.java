@@ -30,12 +30,18 @@ public abstract class State {
 	protected static String isBro = "";
 	protected static int legLength;
 	
+	protected static String endText;
+	
 	public State(StateManager stateManager) {
 		this.stateManager = stateManager;
 		
 		readFile();
 		
 		init();
+	}
+	
+	public void setEndText(String end) {
+		endText = end;
 	}
 	
 	public static String getPartName() {

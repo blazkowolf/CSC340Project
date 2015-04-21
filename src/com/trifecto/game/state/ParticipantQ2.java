@@ -108,7 +108,7 @@ public class ParticipantQ2 extends State {
 			isBro = ", you are not a bro, ";
 		}
 		
-		stateManager.setState(StateManager.GAMEOVER);
+		stateManager.setState(StateManager.PQ3);
 		
 	}
 

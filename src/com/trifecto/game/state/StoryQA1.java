@@ -4,20 +4,23 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 import com.trifecto.game.gfx.Background;
+import com.trifecto.game.main.MainComponent;
 
-public class StoryQ1 extends State {
+public class StoryQA1 extends State {
 	
+	private int currChoice = 0;
 	private String[] responses;
 	
 	private String question = questions[3].substring(3);
 	
-	public StoryQ1(StateManager stateManager) {
+	public StoryQA1(StateManager stateManager) {
 		super(stateManager);
 	}
 
@@ -80,13 +83,28 @@ public class StoryQ1 extends State {
 		// Text centering calculations
 		FontMetrics questionFontMetrics = graphics.getFontMetrics(this.questionFont);
 		FontMetrics responseFontMetrics = graphics.getFontMetrics(this.responseFont);
+		int selectionLength;
 		
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
 		
-		int y = 5;
-		for (String line : this.question.split("\n")) {
-			graphics.drawString(line, 5, y += graphics.getFontMetrics().getHeight());
+		int y = 0;
+		for (String line : this.question.split(altNewLine)) {
+			graphics.drawString(line, 5, y += (graphics.getFontMetrics().getHeight() + 5));
+		}
+		
+		graphics.setFont(this.responseFont);
+		for (int i = 0; i < responses.length; i++) {
+			
+			selectionLength = responseFontMetrics.stringWidth(responses[i]);
+			
+			if(i == currChoice) {
+                graphics.setColor(Color.WHITE);
+            } else {
+                graphics.setColor(this.questionColor);
+            }
+            graphics.drawString(responses[i], (MainComponent.WIDTH / 2) - (selectionLength / 2), 140 + i * 15);
+			
 		}
 		
 	}
@@ -94,11 +112,27 @@ public class StoryQ1 extends State {
 	@Override
 	public void keyPressed(int key) {
 		
+		if (key == KeyEvent.VK_ENTER) { select(); }
+		
+		if (key == KeyEvent.VK_UP) {
+			currChoice--;
+			if (currChoice == -1) { currChoice = responses.length -1; }
+		}
+		
+		if (key == KeyEvent.VK_DOWN) {
+			currChoice++;
+			if (currChoice == responses.length) { currChoice = 0; }
+		}
+		
 	}
 
 	@Override
 	public void keyReleased(int key) {
 		
+	}
+	
+	private void select() {
+		System.exit(0);
 	}
 
 }

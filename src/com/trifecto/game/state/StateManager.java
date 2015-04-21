@@ -14,7 +14,7 @@ public class StateManager {
 	public static final int PQ1 = 1;
 	public static final int PQ2 = 2;
 	public static final int PQ3 = 3;
-	public static final int SQ1 = 4;
+	public static final int SQA1 = 4;
 	public static final int GAMEOVER = 5;
 	
 	public StateManager() {
@@ -25,7 +25,7 @@ public class StateManager {
 		states.add(new ParticipantQ1(this));
 		states.add(new ParticipantQ2(this));
 		states.add(new ParticipantQ3(this));
-		states.add(new StoryQ1(this));
+		states.add(new StoryQA1(this));
 		states.add(new GameOver(this));
 	}
 	

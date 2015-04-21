@@ -28,6 +28,8 @@ public abstract class State {
 	
 	protected Font responseFont;
 	
+	protected static String altNewLine = "@";
+	
 	protected static String partName = "";
 	protected static String isBro = "";
 	protected static String legLength = "";

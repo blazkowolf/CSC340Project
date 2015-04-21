@@ -117,7 +117,7 @@ public class ParticipantQ3 extends State {
 			legLength = "and your leg is too long, ";
 		}
 		
-		stateManager.setState(StateManager.SQ1);
+		stateManager.setState(StateManager.SQA1);
 		
 	}
 

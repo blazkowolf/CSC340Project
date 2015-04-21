@@ -10,20 +10,22 @@ public class StateManager {
 	// Need an index of the state i.e. "currentState"
 	private int currentState;
 	public static final int MENUSTATE = 0;
-	public static final int PLAYSTATE = 1;
-	public static final int PQ1 = 2;
-	public static final int PQ2 = 3;
-	public static final int PQ3 = 4;
+	//public static final int PLAYSTATE = 1;
+	public static final int PQ1 = 1;
+	public static final int PQ2 = 2;
+	public static final int PQ3 = 3;
+	public static final int SQ1 = 4;
 	public static final int GAMEOVER = 5;
 	
 	public StateManager() {
 		states = new ArrayList<State>();
 		currentState = MENUSTATE;
 		states.add(new MenuState(this));
-		states.add(new PlayState(this));
+		//states.add(new PlayState(this));
 		states.add(new ParticipantQ1(this));
 		states.add(new ParticipantQ2(this));
 		states.add(new ParticipantQ3(this));
+		states.add(new StoryQ1(this));
 		states.add(new GameOver(this));
 	}
 	

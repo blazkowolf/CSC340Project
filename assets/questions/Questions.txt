@@ -1,7 +1,7 @@
 P1;What is your name, sonny?
 P2;Are you a bro (True or False)?
 P3;How long is your leg?
-A1;Woken, by a distant clamor, you open your eyes to see that you are in an empty room. You can hear the deep rolling sound of thunder across the floor leading your eyes to a single door. What do you do?
+A1;Woken, by a distant clamor, you open your eyes to"\n"see that you are in an empty room. You can hear the deep rolling sound of thunder across the floor leading your eyes to a single door. What do you do?
 A2;Upon further investigation you discover...nothing. A room is a room and this one is empty. What's next?
 B;As you amble towards the door, you can hear whispers growing louder and louder. Your hand is on the handle of the door and the whispers sound as if they are right next to you. "Dont leave, please stay." The whispers continue, "This isnt the way it was meant to be..."
 D;"Hello!" you shout - "Shhh...I hear a sound..." The whispers continue, "Who are you?" you ask. "Tell me it's true..." the whispers settle into whimpering. You suddenly feel your body again and struggle to open your eyes to once again see the world. A tiny voice much different from the whispers echos in your mind and hangs in the air. "...You have to return...eventually" - Sends you to the end screen then sends you to A.

@@ -13,7 +13,9 @@ public abstract class State {
 	
 	protected StateManager stateManager;
 	
-	protected static BufferedReader bufferedReader;
+	protected static BufferedReader storyBufferedReader;
+	
+	protected BufferedReader choicesBufferedReader;
 	
 	protected Background background;
 	protected String backgroundPath;
@@ -48,10 +50,10 @@ public abstract class State {
 		return partName;
 	}
 	
-	private static void readFile() {
+	private void readFile() {
 		
 		try {
-			bufferedReader = new BufferedReader(new FileReader("assets/questions/Questions.txt"));
+			storyBufferedReader = new BufferedReader(new FileReader("assets/questions/Questions.txt"));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +61,7 @@ public abstract class State {
 		String line;
 		try {
 			
-			for (int i = 0; (line = bufferedReader.readLine()) != null; i++) {
+			for (int i = 0; (line = storyBufferedReader.readLine()) != null; i++) {
 				questions[i] = line;
 			}
 			

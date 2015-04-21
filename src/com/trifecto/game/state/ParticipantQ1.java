@@ -13,7 +13,7 @@ import com.trifecto.game.main.MainComponent;
 
 public class ParticipantQ1 extends State {
 
-	private String text = "Hello, I am a\nCharacter.";
+	private String question = questions[0].substring(3);
 	
 	private char[] name;
 	private int currentChar;
@@ -59,14 +59,14 @@ public class ParticipantQ1 extends State {
 		// Text centering calculations
 		FontMetrics questionFontMetrics = graphics.getFontMetrics(this.questionFont);
         FontMetrics responseFontMetrics = graphics.getFontMetrics(this.responseFont);
-        int questionLength = questionFontMetrics.stringWidth("What is your name, sonny?");
+        int questionLength = questionFontMetrics.stringWidth(this.question);
         int nameLength;
         int nameHeight = responseFontMetrics.getHeight();
 		
 		// Draw question
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
-		graphics.drawString("What is your name, sonny?", (MainComponent.WIDTH / 2) - (questionLength / 2), 50);
+		graphics.drawString(this.question, (MainComponent.WIDTH / 2) - (questionLength / 2), 50);
 		
 		// Type response
 		graphics.setFont(this.responseFont);
@@ -156,7 +156,7 @@ public class ParticipantQ1 extends State {
 		
 		System.out.println("partName: " + this.partName);
 		
-		this.stateManager.setState(StateManager.GAMEOVER);
+		this.stateManager.setState(StateManager.PQ2);
 		
 	}
 

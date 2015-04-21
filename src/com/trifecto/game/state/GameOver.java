@@ -12,6 +12,8 @@ import com.trifecto.game.main.MainComponent;
 public class GameOver extends State {
 	
 	//private String endText = partName + ", the game is over.";
+	//.substring(partName.length() - 3)
+	public static String endText = partName + isBro + "but the\ngame is over.";
 
 	public GameOver(StateManager stateManager) {
 		super(stateManager);
@@ -55,7 +57,11 @@ public class GameOver extends State {
 		
 		graphics.setColor(this.questionColor);
 		graphics.setFont(this.questionFont);
-		graphics.drawString(partName.substring(partName.length() - 3) + ", the game is over.", 10, 20);
+		//partName.length() - 3) + ", the game is over."
+		int y = 50;
+		for (String line : endText.split("\n")) {
+			graphics.drawString(line, 10, y += graphics.getFontMetrics().getHeight());
+		}
 		
 		//graphics.setFont(this.responseFont);
 		//graphics.drawString("Hit ENTER to play again", , y);
@@ -67,6 +73,7 @@ public class GameOver extends State {
 	public void keyPressed(int key) {
 		if (key == KeyEvent.VK_ENTER) {
 			System.out.println("GameOver partName: " + partName);
+			System.out.println("isBro: " + isBro);
 			stateManager.setState(StateManager.MENUSTATE);
 		}
 	}

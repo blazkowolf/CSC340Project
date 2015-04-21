@@ -2,11 +2,19 @@ package com.trifecto.game.state;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 
 import com.trifecto.game.gfx.Background;
+import com.trifecto.game.main.MainComponent;
 
 public class ParticipantQ2 extends State {
+	
+	private String question = questions[1].substring(3);
+	
+	private int currChoice = 0;
+	private String[] options = {"True", "False"};
 	
 	public ParticipantQ2(StateManager stateManager) {
 		super(stateManager);
@@ -39,15 +47,68 @@ public class ParticipantQ2 extends State {
 	@Override
 	public void render(Graphics2D graphics) {
 		
+		this.background.render(graphics);
+		
+		// Text centering calculations
+		FontMetrics questionFontMetrics = graphics.getFontMetrics(this.questionFont);
+		FontMetrics responseFontMetrics = graphics.getFontMetrics(this.responseFont);
+		int questionLength = questionFontMetrics.stringWidth(this.question);
+		int selectionLength;
+		
+		// Draw question
+		graphics.setColor(this.questionColor);
+		graphics.setFont(this.questionFont);
+		graphics.drawString(this.question, (MainComponent.WIDTH / 2) - (questionLength / 2), 50);
+		
+		graphics.setFont(this.responseFont);
+		
+		// Draw options
+		for (int i = 0; i < options.length; i++) {
+			
+			selectionLength = responseFontMetrics.stringWidth(options[i]);
+			
+			if(i == currChoice) {
+                graphics.setColor(Color.WHITE);
+            } else {
+                graphics.setColor(this.questionColor);
+            }
+            graphics.drawString(options[i], (MainComponent.WIDTH / 2) - (selectionLength / 2), 140 + i * 15);
+			
+		}
+		
 	}
 
 	@Override
 	public void keyPressed(int key) {
 		
+		if (key == KeyEvent.VK_ENTER) { select(); }
+		
+		if (key == KeyEvent.VK_UP) {
+			currChoice--;
+			if (currChoice == -1) { currChoice = options.length -1; }
+		}
+		
+		if (key == KeyEvent.VK_DOWN) {
+			currChoice++;
+			if (currChoice == options.length) { currChoice = 0; }
+		}
+		
 	}
 
 	@Override
 	public void keyReleased(int key) {
+		
+	}
+	
+	private void select() {
+		
+		if (currChoice == 0) {
+			isBro = ", you are a bro, ";
+		} else {
+			isBro = ", you are not a bro, ";
+		}
+		
+		stateManager.setState(StateManager.GAMEOVER);
 		
 	}
 

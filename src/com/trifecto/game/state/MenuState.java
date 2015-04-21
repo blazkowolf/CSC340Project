@@ -119,10 +119,6 @@ public class MenuState extends State {
 		}
 		
 		if (currChoice == 1) {
-			// Do nothing...yet
-		}
-		
-		if (currChoice == 2) {
 			System.exit(0);
 		}
 		

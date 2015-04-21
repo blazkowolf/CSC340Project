@@ -1,4 +1,4 @@
-A;Woken, by a distant clamor, you open your eyes to see that you are in an empty room. You can hear the deep rolling sound of thunder across the floor leading your eyes to a single door.  What do you do?
+A;Woken, by a distant clamor, you open your eyes to see that you are in an empty room. You can hear the deep rolling sound of thunder across the floor leading your eyes to a single door. What do you do?
 1;Approach the door;B
 2;Investigate the room further;A2
 3;Go back to sleep;A

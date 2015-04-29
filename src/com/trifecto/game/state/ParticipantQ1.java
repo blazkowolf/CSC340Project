@@ -151,7 +151,12 @@ public class ParticipantQ1 extends State {
 	private void select() {
 		
 		for (int i = 0; i < name.length; i++) {
-			this.partName += Character.toString(name[i]);
+			if (i > 0) {
+				this.partName += Character.toString(name[i]).toLowerCase();
+			} else {
+				this.partName += Character.toString(name[i]);
+			}
+		
 		}
 		
 		System.out.println("partName: " + this.partName);

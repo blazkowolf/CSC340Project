@@ -17,7 +17,7 @@ that we each develop a total understanding of how the game will be executed.
 1. ~~Program the first iteration (rough draft) of the engine~~
 2. ~~Write the story for the game~~
 3. ~~Complete use-case diagrams and scenarios for the gameplay element~~
-4. Discuss and design overall gameplay logic
-5. Implement gameplay logic designs
+4. ~~Discuss and design overall gameplay logic~~
+5. ~~Implement gameplay logic designs~~
 
-*Most likely more to-dos to come!*
+*The game is complete!*
